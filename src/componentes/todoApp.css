@@ -1,0 +1,110 @@
+body{
+  font-family: cursive;
+}
+
+.todoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  width: 50%;
+}
+
+.todoCreateForm {
+  display: grid;
+  grid-template-columns: 1fr 0.3fr;
+  gap: 5px;
+  width: 100%;
+  margin-bottom: 20px;
+  height: 30px;
+}
+
+.todoInput {
+  border: none;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.08);
+  height: 100%;
+  padding-left: 10px;
+}
+
+.todoButtonCreate {
+  border: none;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.todoButtonCreate:hover {
+    cursor: pointer;
+    transition: .3s ease all;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.todosContainer {
+  width: 100%;
+}
+
+.todoActualizarForm {
+  display: grid;
+  grid-template-columns: 1fr 0.6fr;
+  padding: 5px;
+  gap: 3px;
+  height: 25px;
+  align-items: center;
+}
+
+.todo div {
+  display: grid;
+  grid-template-columns: 0.1fr 1fr 0.3fr 0.3fr;
+  padding: 5px;
+  gap: 3px;
+  height: 25px;
+  align-items: center;
+}
+
+.todo button {
+  border: none;
+  border-radius: 3px;
+  height: 100%;
+}
+
+.todo .btnEditar {
+  background-color: transparent;
+  border: 1px solid #a67d02;
+  color: #a67d02;
+}
+
+.todo .btnEditar:hover {
+  background-color: #a67d02;
+  color: #fff;
+  transition: 0.3s ease all;
+  cursor: pointer;
+}
+
+.todo .btnEliminar {
+  background-color: transparent;
+  border: 1px solid red;
+  color: red;
+}
+
+.todo .btnEliminar:hover {
+  cursor: pointer;
+  transition: 0.3s ease all;
+  background-color: red;
+  color: #fff;
+}
+
+.todoActualizarForm input[type="submit"] {
+  border: 1px solid blue;
+  border-radius: 3px;
+  height: 100%;
+  background-color: transparent;
+  color: blue;
+}
+
+.todoActualizarForm input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: blue;
+  transition: 0.3s ease all;
+  color: #fff;
+}
