@@ -1,4 +1,4 @@
-import TodoApp from "./componentes/todoAPP"
+import TodoApp from "./componentes/todoAPP.jsx";
 
 function App() {
   return (
@@ -6,4 +6,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
