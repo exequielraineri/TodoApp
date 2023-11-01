@@ -40,6 +40,7 @@ export default function TodoApp() {
 
   return (
     <div className="todoContainer">
+      <h4>Lista de tareas</h4>
       <form className="todoCreateForm" onSubmit={handleSubmit}>
         <input
           className="todoInput"
@@ -55,7 +56,7 @@ export default function TodoApp() {
           value="Create tarea"
         ></input>
       </form>
-
+      <p className="totalTareas">Total tareas: {todos.length}</p>
       <div className="todosContainer">
         {todos.map((item) => (
           <Todo
