@@ -16,7 +16,7 @@ export default function TodoApp() {
     };
 
     setTodos([...todos, newTodo]);
-    setTitle('');
+    setTitle("");
   }
 
   function handlerActualizar(id, value) {
@@ -31,10 +31,10 @@ export default function TodoApp() {
     setTodos(temp);
   }
 
-  function handleEstado(id){
-    const temp=[...todos];
-    const item=temp.find((item)=>item.id===id);
-    item.completed=!item.completed;
+  function handleEstado(id) {
+    const temp = [...todos];
+    const item = temp.find((item) => item.id === id);
+    item.completed = !item.completed;
     setTodos(temp);
   }
 
@@ -58,15 +58,18 @@ export default function TodoApp() {
       </form>
       <p className="totalTareas">Total tareas: {todos.length}</p>
       <div className="todosContainer">
-        {todos.map((item) => (
-          <Todo
-            key={item.id}
-            item={item}
-            actualizar={handlerActualizar}
-            eliminar={handleEliminar}
-            estado={handleEstado}
-          ></Todo>
-        ))}
+        
+            {todos.map((item) => (
+              <Todo
+                key={item.id}
+                item={item}
+                actualizar={handlerActualizar}
+                eliminar={handleEliminar}
+                estado={handleEstado}
+              ></Todo>
+            ))}
+          
+       
       </div>
     </div>
   );

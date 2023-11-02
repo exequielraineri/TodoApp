@@ -1,4 +1,5 @@
-import TodoApp from "./componentes/todoApp.jsx";
+import TodoApp from "./componentes/todoAPP.jsx";
+
 
 function App() {
   return (
