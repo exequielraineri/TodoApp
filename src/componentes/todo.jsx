@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 /* eslint-disable react/prop-types */
 export default function Todo({ item, actualizar, eliminar, estado }) {
   const [isEdit, setIsEdit] = useState(false);
@@ -32,6 +31,7 @@ export default function Todo({ item, actualizar, eliminar, estado }) {
         <input
           type="submit"
           value="Actualizar"
+          className="btn btnActualizar"
           onClick={handleClickActualizar}
         />
       </form>
@@ -40,19 +40,25 @@ export default function Todo({ item, actualizar, eliminar, estado }) {
 
   function TodoElement() {
     return (
-      <div>
-        {item.completed ? (
-          <span>✔</span>
-        ) : (
-          <input type="checkbox" onClick={() => estado(item.id)}></input>
-        )}
+      <div className="todo-item">
+          {item.completed ? (
+            <div className="completado">
+              <span>✔</span>
+            </div>
+          ) : (
+            <div className="incompleto">
+            <input type="checkbox" onClick={() => estado(item.id)}></input>
+            </div>
+          )}
+ 
+ 
 
-        {item.title}
-
-        <button className="btnEditar" onClick={() => setIsEdit(true)}>
+              {item.title}
+           
+        <button className="btn btnEditar" onClick={() => setIsEdit(true)}>
           Editar
         </button>
-        <button className="btnEliminar" onClick={() => eliminar(item.id)}>
+        <button className="btn btnEliminar" onClick={() => eliminar(item.id)}>
           Eliminar
         </button>
       </div>

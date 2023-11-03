@@ -2,9 +2,14 @@ import { useState } from "react";
 import Todo from "./todo.jsx";
 import "./todoApp.css";
 
+import swal from "sweetalert";
+
 export default function TodoApp() {
   const [title, setTitle] = useState("");
   const [todos, setTodos] = useState([]);
+  const [completado,setCompletado]=useState(0);
+
+
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,8 +40,27 @@ export default function TodoApp() {
     const temp = [...todos];
     const item = temp.find((item) => item.id === id);
     item.completed = !item.completed;
+    if(item.completed){
+      setCompletado(completado+1);
+      
+      swal({
+        title: `Tarea completada: "${item.title}"`,
+        timer:2000,
+        icon:"success"
+      });
+    }
     setTodos(temp);
   }
+
+  function handlerChange(e){
+   
+      setTitle(e.target.value);
+   
+    
+  }
+
+  
+
 
   return (
     <div className="todoContainer">
@@ -46,17 +70,17 @@ export default function TodoApp() {
           className="todoInput"
           type="text"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={handlerChange}
           placeholder="Ej: Ir al supermercado"
           required
         ></input>
         <input
           className="todoButtonCreate"
           type="submit"
-          value="Create tarea"
+          value="Agregar"
         ></input>
       </form>
-      <p className="totalTareas">Total tareas: {todos.length}</p>
+      <p className="totalTareas">{completado} de {todos.length} tareas completadas</p>
       <div className="todosContainer">
         
             {todos.map((item) => (
