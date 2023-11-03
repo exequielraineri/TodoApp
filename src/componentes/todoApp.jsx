@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Todo from "./todo.jsx";
 import "./todoApp.css";
 
@@ -6,10 +6,29 @@ import swal from "sweetalert";
 
 export default function TodoApp() {
   const [title, setTitle] = useState("");
-  const [todos, setTodos] = useState([]);
-  const [completado,setCompletado]=useState(0);
+  const [todos, setTodos] = useState(() => {
+    try {
+      const todosLocalStorage = localStorage.getItem("todos");
+      return todosLocalStorage ? JSON.parse(todosLocalStorage) : [];
+    } catch (error) {
+      return [];
+    }
+  });
 
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
+  const [completado, setCompletado] = useState(()=>{
+    const completadosCount = todos.reduce((count, item) => {
+      if (item.completed) {
+        return count + 1;
+      }
+      return count;
+    }, 0);
+  
+    return completadosCount;
+  });
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -33,10 +52,10 @@ export default function TodoApp() {
 
   function handleEliminar(id) {
     const temp = todos.filter((item) => item.id !== id);
-   
-    const item=todos.find((item)=>item.id===id);
-    if(item.completed){
-      setCompletado(completado-1);
+
+    const item = todos.find((item) => item.id === id);
+    if (item.completed) {
+      setCompletado(completado - 1);
     }
     setTodos(temp);
   }
@@ -45,27 +64,21 @@ export default function TodoApp() {
     const temp = [...todos];
     const item = temp.find((item) => item.id === id);
     item.completed = !item.completed;
-    if(item.completed){
-      setCompletado(completado+1);
-      
+    if (item.completed) {
+      setCompletado(completado + 1);
+
       swal({
         title: `Tarea completada: "${item.title}"`,
-        timer:2000,
-        icon:"success"
+        timer: 2000,
+        icon: "success",
       });
     }
     setTodos(temp);
   }
 
-  function handlerChange(e){
-   
-      setTitle(e.target.value);
-   
-    
+  function handlerChange(e) {
+    setTitle(e.target.value);
   }
-
-  
-
 
   return (
     <div className="todoContainer">
@@ -85,20 +98,19 @@ export default function TodoApp() {
           value="Agregar"
         ></input>
       </form>
-      <p className="totalTareas">{completado} de {todos.length} tareas completadas</p>
+      <p className="totalTareas">
+        {completado} de {todos.length} tareas completadas
+      </p>
       <div className="todosContainer">
-        
-            {todos.map((item) => (
-              <Todo
-                key={item.id}
-                item={item}
-                actualizar={handlerActualizar}
-                eliminar={handleEliminar}
-                estado={handleEstado}
-              ></Todo>
-            ))}
-          
-       
+        {todos.map((item) => (
+          <Todo
+            key={item.id}
+            item={item}
+            actualizar={handlerActualizar}
+            eliminar={handleEliminar}
+            estado={handleEstado}
+          ></Todo>
+        ))}
       </div>
     </div>
   );
