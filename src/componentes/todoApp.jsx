@@ -33,6 +33,11 @@ export default function TodoApp() {
 
   function handleEliminar(id) {
     const temp = todos.filter((item) => item.id !== id);
+   
+    const item=todos.find((item)=>item.id===id);
+    if(item.completed){
+      setCompletado(completado-1);
+    }
     setTodos(temp);
   }
 
