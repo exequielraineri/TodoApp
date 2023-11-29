@@ -1,11 +1,10 @@
-//import TodoApp from "./componentes/todoApp.jsx";
 
-import TodoApp from "./componentes/todoApp";
+import TaskList from "./componentes/TaskList";
 
 function App() {
   return (
-    <TodoApp></TodoApp>
-  );
+    <TaskList></TaskList>
+    );
 }
 
 export default App;

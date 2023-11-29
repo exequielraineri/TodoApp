@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import Todo from "./todo.jsx";
-import "./todoApp.css";
+import TaskItem from "./TaskItem.jsx";
+import "./css/taskList.css";
+import { TaskForm } from "./TaskForm.jsx";
 
 import swal from "sweetalert";
 
-export default function TodoApp() {
+export default function TaskList() {
   const [title, setTitle] = useState("");
   const [todos, setTodos] = useState(() => {
     try {
@@ -30,18 +31,6 @@ export default function TodoApp() {
     return completadosCount;
   });
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    const newTodo = {
-      id: crypto.randomUUID(),
-      title: title,
-      completed: false,
-    };
-
-    setTodos([...todos, newTodo]);
-    setTitle("");
-  }
 
   function handlerActualizar(id, value) {
     const temp = [...todos];
@@ -76,41 +65,32 @@ export default function TodoApp() {
     setTodos(temp);
   }
 
-  function handlerChange(e) {
-    setTitle(e.target.value);
-  }
+  
 
   return (
-    <div className="todoContainer">
-      <h4>Lista de tareas</h4>
-      <form className="todoCreateForm" onSubmit={handleSubmit}>
-        <input
-          className="todoInput"
-          type="text"
-          value={title}
-          onChange={handlerChange}
-          placeholder="Ej: Ir al supermercado"
-          required
-        ></input>
-        <input
-          className="todoButtonCreate"
-          type="submit"
-          value="Agregar"
-        ></input>
-      </form>
-      <p className="totalTareas">
-        {completado} de {todos.length} tareas completadas
-      </p>
-      <div className="todosContainer">
-        {todos.map((item) => (
-          <Todo
-            key={item.id}
-            item={item}
-            actualizar={handlerActualizar}
-            eliminar={handleEliminar}
-            estado={handleEstado}
-          ></Todo>
-        ))}
+    <div className="fondo">
+      <div className="todoContainer">
+        <h4>Lista de tareas</h4>
+        <TaskForm
+          title={title}
+          setTitle={setTitle}
+          todos={todos}
+          setTodos={setTodos}
+        ></TaskForm>
+        <p className="totalTareas">
+          {completado} de {todos.length} tareas completadas
+        </p>
+        <div className="todosContainer">
+          {todos.map((item) => (
+            <TaskItem
+              key={item.id}
+              item={item}
+              actualizar={handlerActualizar}
+              eliminar={handleEliminar}
+              estado={handleEstado}
+            ></TaskItem>
+          ))}
+        </div>
       </div>
     </div>
   );

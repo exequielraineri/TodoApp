@@ -1,6 +1,7 @@
+import "./css/taskItem.css";
 import { useState } from "react";
 /* eslint-disable react/prop-types */
-export default function Todo({ item, actualizar, eliminar, estado }) {
+export default function TaskItem({ item, actualizar, eliminar, estado }) {
   const [isEdit, setIsEdit] = useState(false);
 
   function FormEdit() {

@@ -1,0 +1,58 @@
+.todo{
+    width: 100%;
+}
+
+.todo-item{
+    padding: 10px 0;
+    display: grid;
+    grid-template-columns: .2fr 1fr .5fr .5fr;
+    gap: 5px;
+    border-bottom: solid 1px white;
+    min-height: 20px;
+    align-items: center;
+    color: lightblue;
+    font-family: sans-serif;
+    
+}
+
+.todo .btn{
+    height: 100%;
+    border-radius: 3px;
+    background-color: rgba(255,255,255, 0.7);
+    border: none;
+}
+
+
+
+.btn:hover{
+    background-color: rgba(255,255,255, 0.9);
+    transition: .3s ease all;
+    cursor: pointer;
+}
+
+
+.todoActualizarForm{
+    display: grid;
+    grid-template-columns: 1fr .3fr;
+    gap: 5px;
+    min-height: 20px;
+}
+
+.todoActualizarForm input:first-child{
+    padding-left: 10px;
+    background-color: rgba(255,255,255, 0.5);
+    border: none;
+}
+
+.todoActualizarForm input[type=submit]{
+    background-color: rgba(24, 90, 223, 0.4);
+}
+
+.todoActualizarForm input[type=submit]:hover{
+    background-color: rgba(24, 90, 223, 0.9);
+    cursor: pointer;
+    transition: .3s ease all;
+}
+
+
+

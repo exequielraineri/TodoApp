@@ -1,0 +1,32 @@
+
+.todoCreateForm{
+    width: 90%;
+    display: grid;
+    grid-template-columns: 1fr .3fr;
+    min-height: 30px;
+}
+
+.todoCreateForm input:first-child{
+    padding-left: 10px;
+    border: solid 1px white;
+    background: none;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+}
+
+input::placeholder{
+    color: rgba(255, 255, 255, 0.5)
+}
+
+input[type=submit]{
+    background-color: rgba(24, 90, 223, 0.4);
+    color: #f0f0f0;
+    border: none;
+    font-size: .7em;
+}
+
+input[type=submit]:hover{
+    background-color: rgba(24, 90, 223, 0.9);
+    cursor: pointer;
+    transition: .3s ease all;
+}
